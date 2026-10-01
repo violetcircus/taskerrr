@@ -1,0 +1,14 @@
+[
+  {
+    "name": "test deck 1",
+    "desc": "test 1",
+    "algo": "",
+    "cards": [
+      {
+        "name": "test card 1",
+        "desc": "idk",
+        "weight": 0
+      }
+    ]
+  }
+]
