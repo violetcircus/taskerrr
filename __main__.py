@@ -1,27 +1,45 @@
 import json
 
-class deck:
-    cards = []
-    name = ""
-    desc = ""
-    algo = ""
-    def new_deck(name, desc):
-        print("im a deck!", name, desc)
+decks = []
 
-class card:
-    name = ""
-    desc = ""
-    weight = 0
-    def new_card(name, desc):
-        print("im a card!", name, desc)
+class Deck:
+    def __init__(self, name, desc, algo, cards: List[Card]):
+        # print("im a deck! name: ", name, desc)
+        self.name = name
+        self.desc = desc
+        self.algo = algo
+        self.cards = cards
+
+
+class Card:
+    def __init__(self, name, desc, weight):
+        # print("im a card! name: ", name, desc)
+        self.name = name
+        self.desc = desc
+        self.weight = 0
 
 def load_decks():
     with open("decks.json") as f:
-        d = json.load(f)
-        return d
+        deck_file = json.load(f)
+        for d in deck_file:
+            card_objects = []
+            for c in d["cards"]:
+                card_objects.append(Card(**c))
+            deck = Deck(
+                name = d["name"],
+                desc = d["desc"],
+                algo = d["algo"],
+                cards = card_objects
+            )
+            decks.append(deck)
 
 def view_deck():
     print("current decks:", decks) 
+    print("which deck?")
+    choice = int(input())
+    print(decks[choice].name)
+    print(decks[choice].desc)
+    print(decks[choice].cards)
 
 def start():
     while True:
@@ -34,12 +52,11 @@ def start():
                 create_deck()
 
 def create_deck():
-    done = false
     print("new deck name")
     name = input()
     print("deck description")
     desc = input()
-    deck1 = deck.new_deck(name, desc)
+    deck1 = Deck(name, desc)
 
     print("loading deck with cards...")
 
@@ -48,7 +65,7 @@ def create_deck():
         name = input()
         print("card 1 desc:")
         desc = input()
-        new_card = cards.new_card(name, desc)
+        new_card = Card(name, desc)
         deck1.cards.append(new_card)
         print("done?")
         done_check = input()
@@ -56,6 +73,5 @@ def create_deck():
             break
     decks.append(deck1)
 
-class main:
-    decks = load_decks()
-    start(decks)
+load_decks()
+start()
