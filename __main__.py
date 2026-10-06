@@ -1,19 +1,16 @@
 import json
 
-decks = []
+decks = {}
 
 class Deck:
     def __init__(self, name, desc, algo, cards: List[Card]):
-        # print("im a deck! name: ", name, desc)
         self.name = name
         self.desc = desc
         self.algo = algo
         self.cards = cards
 
-
 class Card:
     def __init__(self, name, desc, weight):
-        # print("im a card! name: ", name, desc)
         self.name = name
         self.desc = desc
         self.weight = 0
@@ -21,7 +18,8 @@ class Card:
 def load_decks():
     with open("decks.json") as f:
         deck_file = json.load(f)
-        for d in deck_file:
+        for k in deck_file.keys():
+            d = deck_file[k]
             card_objects = []
             for c in d["cards"]:
                 card_objects.append(Card(**c))
@@ -31,15 +29,26 @@ def load_decks():
                 algo = d["algo"],
                 cards = card_objects
             )
-            decks.append(deck)
+            decks[d["name"]] = deck
+
+def view_cards(deck):
+    for c in deck.cards:
+        print("-------------")
+        print(c.name)
+        print(c.desc)
+        print("-------------")
+    pass
 
 def view_deck():
-    print("current decks:", decks) 
+    print("current decks:", decks.keys()) 
     print("which deck?")
-    choice = int(input())
-    print(decks[choice].name)
-    print(decks[choice].desc)
-    print(decks[choice].cards)
+    choice = input()
+    print("-------------")
+    deck = decks[choice]
+    print(deck.name)
+    print(deck.desc)
+    print("cards:")
+    view_cards(deck)
 
 def start():
     while True:

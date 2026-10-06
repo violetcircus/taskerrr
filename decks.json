@@ -1,5 +1,5 @@
-[
-  {
+{
+  "test deck 1": {
     "name": "test deck 1",
     "desc": "test 1",
     "algo": "",
@@ -11,4 +11,4 @@
       }
     ]
   }
-]
+}
