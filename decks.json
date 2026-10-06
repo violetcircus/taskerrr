@@ -20,6 +20,16 @@
         "name": "lalala this is a card",
         "desc": "popopopo this is a card",
         "weight": 0
+      },
+      {
+        "name": "wow i added this card from the program",
+        "desc": "isnt this awesome so f ar",
+        "weight": 0
+      },
+      {
+        "name": "uh oh",
+        "desc": "i forgot to type yes to the done promp",
+        "weight": 0
       }
     ]
   }
