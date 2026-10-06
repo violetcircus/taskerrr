@@ -11,14 +11,14 @@
       }
     ]
   },
-  "test deck 2": {
-    "name": "test deck 2",
-    "desc": "this is my second test deck, created with the program this time.",
+  "v": {
+    "name": "v",
+    "desc": "v",
     "algo": "",
     "cards": [
       {
-        "name": "lalala this is a card",
-        "desc": "popopopo this is a card",
+        "name": "v",
+        "desc": "v",
         "weight": 0
       }
     ]
