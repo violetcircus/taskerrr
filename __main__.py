@@ -99,7 +99,6 @@ def edit_deck():
             print("current desc:", deck.desc)
             print("enter new desc:")
             deck.desc = input()
-            pass
         case "c":
             print("[a]dd cards or [c]hange a card?")
             choice = input()
@@ -108,7 +107,27 @@ def edit_deck():
                     add_cards(deck)
                     print("done adding cards to", deck.name)
                 case "c":
-                    pass
+                    while True:
+                        print("pick a card, any card")
+                        view_cards(deck)
+                        choice = int(input())
+
+                        card = deck.cards[choice]
+
+                        print("edit [n]ame or [d]esc?")
+                        match input():
+                            case "n":
+                                print("current name:", card.name)
+                                print("enter new name:")
+                                card.name = input()
+                            case "d":
+                                print("current desc:", card.desc)
+                                print("enter new desc:")
+                                card.desc = input()
+                        print("done?")
+                        if input() == "y":
+                            break
+    print("lalala")
     save_decks()
 
 def start():
